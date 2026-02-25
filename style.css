@@ -8,7 +8,7 @@
   --accent: #8b1a1a;
   --gold: #a8872d;
   --border: #d4c9b5;
-  --xiying: #0000BF;
+  --jiying: #0000BF;
   --zhonghui: #004080;
   --jikang: #401A07;
   --changde: #BF80BF;
@@ -24,7 +24,7 @@ body {
   font-size: 18px;
 }
 
-.c-xiying { color: var(--xiying); }
+.c-jiying { color: var(--jiying); }
 .c-zhonghui { color: var(--zhonghui); }
 .c-jikang { color: var(--jikang); }
 .c-changde { color: var(--changde); }
