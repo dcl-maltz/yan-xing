@@ -200,8 +200,8 @@ body {
 }
 
 p {
-  margin-bottom: 0em;
-  text-indent: 0em;
+  text-indent: 0;
+  margin: 0 0 1em 0;
 }
 
 p.no-indent { text-indent: 0; }
