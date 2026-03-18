@@ -12,6 +12,7 @@
   --zhonghui: #004080;
   --changde: #BF80BF;
   --zhugeyu: #AA0000;
+  --maozi: #000800;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,6 +29,7 @@ body {
 .c-zhonghui { color: var(--zhonghui); }
 .c-changde { color: var(--changde); }
 .c-zhugeyu { color: var(--zhugeyu); }
+.c-maozi { color: var(--maozi); }
 
 /* --- Header (index page) --- */
 .site-header {
