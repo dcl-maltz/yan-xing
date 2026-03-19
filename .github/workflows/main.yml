@@ -1,0 +1,32 @@
+name: Backup to Google Drive
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # daily
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Zip repository
+        run: |
+          zip -r repo.zip . -x "*.git*"
+
+      - name: Setup gdrive
+        run: |
+          curl -L https://github.com/prasmussen/gdrive/releases/download/2.1.0/gdrive-linux-x64 -o gdrive
+          chmod +x gdrive
+
+      - name: Authenticate gdrive
+        run: |
+          echo '${{ secrets.GDRIVE_CREDENTIALS }}' > creds.json
+          ./gdrive account import creds.json
+
+      - name: Upload to Drive
+        run: |
+          ./gdrive upload --parent ${{ secrets.GDRIVE_FOLDER_ID }} repo.zip
