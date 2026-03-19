@@ -1,9 +1,9 @@
 name: Backup to Google Drive
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 3 * * *'
-  workflow_dispatch:
 
 jobs:
   backup:
@@ -15,26 +15,18 @@ jobs:
 
       - name: Zip repository
         run: |
-          zip -r repo-$(date +%F).zip . -x "*.git*"
+          zip -r repo.zip . -x "*.git*"
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-
-      - name: Install dependencies
+      - name: Install gdrive
         run: |
-          pip install google-api-python-client google-auth google-auth-httplib2 google-auth-oauthlib
+          wget https://github.com/prasmussen/gdrive/releases/download/2.1.0/gdrive-linux-x64
+          mv gdrive-linux-x64 gdrive
+          chmod +x gdrive
 
-      - name: Upload to Google Drive
-        env:
-          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
-          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+      - name: Authenticate
         run: |
-          echo "$GDRIVE_CREDENTIALS" > creds.json
+          printf '%s' '${{ secrets.GDRIVE_CREDENTIALS }}' > creds.json
 
-          python <<EOF
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
-import os
-
-SCOPES = ['https://www.googleapis.com/auth/drive.file']
+      - name: Upload
+        run: |
+          ./gdrive upload --parent ${{ secrets.GDRIVE_FOLDER_ID }} repo.zip
