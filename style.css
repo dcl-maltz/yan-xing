@@ -92,20 +92,28 @@ body {
   font-size: 1.05em;
 }
 
-.toc ul { list-style: none; }
-.toc li { padding: 3px 0; }
+.toc ul {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+.toc li {
+  padding: 3px 0;
+}
 
 .chapter-list {
+  list-style: none;
   padding-left: 1.5em;
   margin: 0.5em 0 1.5em 0;
   display: grid;
-  grid-template-columns: repeat(5, max-content);
-  gap: 0.4em 1.2em;
+  grid-template-columns: repeat(5, 4em);
+  gap: 0.8em 1.2em;
 }
 
 .chapter-list li {
   margin: 0;
   padding: 0;
+  justify-self: start;
 }
 
 .toc a {
@@ -261,8 +269,9 @@ p.no-indent { text-indent: 0; }
   .site-header h1 { font-size: 2.2em; }
   .ch-header h1 { font-size: 1.4em; }
   .content { padding: 30px 16px 50px; }
+
   .chapter-list {
-    grid-template-columns: repeat(3, max-content);
-    gap: 0.35em 1em;
+    grid-template-columns: repeat(3, 4em);
+    gap: 0.6em 1em;
   }
 }
