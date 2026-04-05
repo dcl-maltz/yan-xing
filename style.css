@@ -26,6 +26,35 @@ body {
   font-size: 18px;
 }
 
+/* --- English pages --- */
+body.english-page {
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+}
+
+body.english-page .site-header h1,
+body.english-page .ch-header h1,
+body.english-page .toc h2,
+body.english-page .toc .part-title {
+  letter-spacing: 0.04em;
+}
+
+body.english-page .subtitle {
+  font-size: 1.06em;
+  line-height: 1.85;
+}
+
+body.english-page .meta,
+body.english-page .author,
+body.english-page .book-title,
+body.english-page .chapter-note,
+body.english-page .ch-nav,
+body.english-page .ch-nav-bottom,
+body.english-page .site-footer {
+  letter-spacing: 0.01em;
+}
+
 .c-jiying { color: var(--jiying); }
 .c-zhonghui { color: var(--zhonghui); }
 .c-changde { color: var(--changde); }
